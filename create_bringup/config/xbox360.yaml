@@ -8,10 +8,10 @@ joy_teleop:
       deadman_buttons: [0]  # Hold "A" button while driving
       axis_mappings:
         linear-x:
-          axis: 2  # Left thumb (up/down)
+          axis: 1  # Left thumb (up/down)
           scale: 0.4
           offset: 0.0
         angular-z:
-          axis: 1  # Left thumb stick (left/right)
+          axis: 0  # Left thumb stick (left/right)
           scale: 2.5
           offset: 0.0
