@@ -31,6 +31,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <chrono>
 #include <memory>
 #include <string>
+#include <cstdlib>
 
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
@@ -549,7 +550,11 @@ void CreateDriver::publishBatteryInfo()
 void CreateDriver::publishButtonPresses() const
 {
   if (robot_->isCleanButtonPressed()) {
+    // When the clean button is pressed, disconnect from roomba
+    robot_->disconnect();
     clean_btn_pub_->publish(empty_msg_);
+    // Shutdown this node
+    rclcpp::shutdown();
   }
   if (robot_->isDayButtonPressed()) {
     day_btn_pub_->publish(empty_msg_);
